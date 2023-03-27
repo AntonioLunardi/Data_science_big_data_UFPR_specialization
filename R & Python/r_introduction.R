@@ -150,14 +150,59 @@ if (type == 'freight'){
 }
   print(fuel)
   
+# Fuel selection with user interaction  
+ cat('Wich is your vehicle type? [freight/tour]')
+ type = readline()
+ cat('How much is it the gasoline liter price?')
+ gasoline_price = as.double(readline())
+ cat('How much is it the alcohol liter price?')
+ alcohol_price = as.double(readline())
+  
+  if (type == 'freight'){
+    fuel <- 'diesel'
+  } else if (type == 'tour'){
+    if (alcohol_price/gasoline_price < 0.7){
+      fuel <- 'alcohol'
+    }
+    else {
+      fuel <- 'gasoline'
+    }
+  } else {
+    print('Invalid type!')
+  }
+  print(fuel)
+
+# Using switch case
+  fuel <- 'alcohol'
+  distance = 100
+  switch(fuel, 
+       'diesel' = {
+         km_per_liter <- 10
+         km_per_liter
+       },
+       'gasoline' = {
+         km_per_liter <- 13
+         km_per_liter
+       },
+       'alcohol' = {
+         km_per_liter <- 15
+         km_per_liter
+       }, {
+         NA_real_
+       }
+       )
+distance/km_per_liter
+
+       
 
 # Golden ratio approximation by Fibonacci Sequence
 phi_real <- (1 + sqrt(5))/2
 x_left <- 1
 x_right <- 1
+phi_approx <- 1
 
 i <- 1
-while(abs(phi_real - phi_approx) > 0.0001) {
+while(abs(phi_real - phi_approx) > 0.0000001) {
   x_next <- x_left + x_right
   phi_approx <- x_right/x_left
   x_left <- x_right
@@ -170,3 +215,5 @@ print(i)
 phi_approx
 
 abs(phi_real - phi_approx) > 0.0001
+
+
